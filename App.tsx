@@ -1,21 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import {
-  upcomingMovies,
-  movieCastDetails,
-  nowPlayingMovies,
-  popularMovies,
-} from './api/apiCalls';
+import { StackNavigator } from './navigators/StackNavigator';
 
 export default function App() {
-  console.log(popularMovies);
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      {/* <CustomIcon name="search" /> */}
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <>
+  <StatusBar style='light' />
+  <StackNavigator />
+  </>;
 }
 
 const styles = StyleSheet.create({
