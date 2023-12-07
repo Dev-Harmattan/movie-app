@@ -25,7 +25,8 @@ export const TabNavigator = () => {
         tabBarStyle: {
           backgroundColor: COLORS.Black,
           marginTop: 0,
-          height: SPACING.space_10 * 10,
+          height: SPACING.space_9 * 10,
+          borderTopWidth: 0,
         },
         tabBarLabel: ({ focused }) => {
           let labelStyle = {
