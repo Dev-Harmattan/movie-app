@@ -66,7 +66,8 @@ const HomeScreen = ({ navigation }: any) => {
       >
         <View style={styles.inputContainer}>
           <SearchInput
-            handleSearch={() => navigation.navigate('Search')}
+            handleGoToSearch={(text) => navigation.navigate('Search')}
+            handleSearch={() => {}}
             placeHolder="Search your Movies..."
             customFont={'Poppins-Regular'}
           />
@@ -87,6 +88,7 @@ const HomeScreen = ({ navigation }: any) => {
       <View style={styles.inputContainer}>
         <SearchInput
           handleSearch={() => navigation.navigate('Search')}
+          handleGoToSearch={(text) => navigation.navigate('Search')}
           placeHolder="Search your Movies..."
           customFont={'Poppins-Regular'}
         />
@@ -97,7 +99,8 @@ const HomeScreen = ({ navigation }: any) => {
         horizontal
         keyExtractor={(item) => item.id}
         bounces={false}
-        snapToInterval={width * 0.7 + SPACING.space_36}
+        snapToInterval={width * 0.4 + SPACING.space_36}
+        decelerationRate={0}
         data={nowPlayingMoviesList}
         renderItem={({ item, index }) => {
           if (!item.original_title) {

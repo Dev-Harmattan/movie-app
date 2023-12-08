@@ -8,8 +8,8 @@ interface SubMovieCardProps {
   handleCardPress: () => void;
   shouldMarginAtEnd: boolean;
   shouldMarginAround: boolean;
-  isFirst: boolean;
-  isLast: boolean;
+  isFirst?: boolean;
+  isLast?: boolean;
   cardWidth: number;
   customFont: string;
 }
