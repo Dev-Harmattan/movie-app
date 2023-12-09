@@ -4,7 +4,6 @@ import { baseImagePath } from '../api/apiPaths';
 import {
   BORDERRADIUS,
   COLORS,
-  FONTFAMILY,
   FONTSIZE,
   SPACING,
 } from '../theme/theme';
@@ -87,7 +86,9 @@ const MovieCard = ({
           {item.genre_ids.slice(1, 4).map((item: number) => {
             return (
               <View key={item} style={styles.genreBox}>
-                <Text style={styles.genreText}>{genres[item]}</Text>
+                <Text style={[styles.genreText, { fontFamily: customFont }]}>
+                  {genres[item]}
+                </Text>
               </View>
             );
           })}
@@ -129,7 +130,6 @@ const styles = StyleSheet.create({
     borderRadius: BORDERRADIUS.radius_25,
   },
   genreText: {
-    fontFamily: FONTFAMILY.poppins_regular,
     fontSize: FONTSIZE.size_10,
     color: COLORS.WhiteRGBA75,
   },

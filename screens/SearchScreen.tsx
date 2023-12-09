@@ -11,6 +11,11 @@ import { COLORS, FONTSIZE, SPACING } from '../theme/theme';
 import SubMovieCard from '../components/SubMovieCard';
 import { searchMovies } from '../api/apiCalls';
 import SearchInput from '../components/SearchInput';
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+} from '@expo-google-fonts/poppins';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -19,19 +24,23 @@ const SearchScreen = ({ navigation }) => {
   const [searchText, setSearchText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_600SemiBold,
+  });
+
   const callSearchFn = async () => {
     setIsLoading(true);
     try {
       const { results } = await searchMovies(searchText);
       setSearchList(results);
-      console.log(results);
     } catch (error) {
     } finally {
       setIsLoading(false);
     }
   };
 
-  if (isLoading) {
+  if (isLoading || !fontsLoaded) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size={'large'} color={COLORS.Orange} />
@@ -47,16 +56,17 @@ const SearchScreen = ({ navigation }) => {
             handleSearch={(text) => setSearchText(text)}
             handleGoToSearch={callSearchFn}
             placeHolder="Search your Movies..."
-            customFont={'Poppins-Regular'}
+            customFont={'Poppins_400Regular'}
           />
         </View>
         {!isLoading && searchList.length === 0 ? (
           <View style={styles.loadingContainer}>
-            <Text style={styles.noItem}>No Movies Found!</Text>
+            <Text style={styles.noItem}>No Movies Found! Please Search.</Text>
           </View>
         ) : (
           <FlatList
             numColumns={2}
+            showsVerticalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             data={searchList}
             bounces={false}
@@ -70,7 +80,7 @@ const SearchScreen = ({ navigation }) => {
                   navigation.navigate('MovieDetails', { movieId: item.id });
                 }}
                 cardWidth={width / 2 - SPACING.space_12 * 2}
-                customFont={'Poppins-Regular'}
+                customFont={'Poppins_400Regular'}
               />
             )}
           />

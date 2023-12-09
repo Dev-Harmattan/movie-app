@@ -80,17 +80,17 @@ interface FontFamily {
   poppins_thin: string;
 }
 
-export const FONTFAMILY: FontFamily = {
-  poppins_black: '../assets/fonts/Poppins-Black.ttf',
-  poppins_bold: '../assets/fonts/Poppins-Bold.ttf',
-  poppins_extrabold: '../assets/fonts/Poppins-ExtraBold.ttf',
-  poppins_extralight: '../assets/fonts/Poppins-ExtraLight.ttf',
-  poppins_light: '../assets/fonts/Poppins-Light.ttf',
-  poppins_medium: '../assets/fonts/Poppins-Medium.ttf',
-  poppins_regular: '../assets/fonts/Poppins-Regular.ttf',
-  poppins_semibold: '../assets/fonts/Poppins-SemiBold.ttf',
-  poppins_thin: '../assets/fonts/Poppins-Thin.ttf',
-};
+// export const FONTFAMILY: FontFamily = {
+//   poppins_black: '../assets/fonts/Poppins-Black.ttf',
+//   poppins_bold: '../assets/fonts/Poppins-Bold.ttf',
+//   poppins_extrabold: '../assets/fonts/Poppins-ExtraBold.ttf',
+//   poppins_extralight: '../assets/fonts/Poppins-ExtraLight.ttf',
+//   poppins_light: '../assets/fonts/Poppins-Light.ttf',
+//   poppins_medium: '../assets/fonts/Poppins-Medium.ttf',
+//   poppins_regular: '../assets/fonts/Poppins-Regular.ttf',
+//   poppins_semibold: '../assets/fonts/Poppins-SemiBold.ttf',
+//   poppins_thin: '../assets/fonts/Poppins-Thin.ttf',
+// };
 
 interface FontSize {
   size_8: number;

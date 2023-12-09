@@ -8,9 +8,13 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import { useFonts } from 'expo-font';
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+} from '@expo-google-fonts/poppins';
 
-import { COLORS, FONTFAMILY, SPACING } from '../theme/theme';
+import { COLORS, SPACING } from '../theme/theme';
 import SearchInput from '../components/SearchInput';
 import {
   getNowPlayingMovies,
@@ -31,8 +35,8 @@ const HomeScreen = ({ navigation }: any) => {
   const [popularMoviesList, setPopularMoviesList] = useState<any>(undefined);
 
   const [fontsLoaded] = useFonts({
-    'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
-    'Poppins-Semibold': require('../assets/fonts/Poppins-SemiBold.ttf'),
+    Poppins_400Regular,
+    Poppins_600SemiBold,
   });
 
   useEffect(() => {
@@ -63,13 +67,14 @@ const HomeScreen = ({ navigation }: any) => {
         style={styles.container}
         bounces={false}
         contentContainerStyle={styles.containerStyle}
+        showsVerticalScrollIndicator={false}
       >
         <View style={styles.inputContainer}>
           <SearchInput
             handleGoToSearch={(text) => navigation.navigate('Search')}
             handleSearch={() => {}}
             placeHolder="Search your Movies..."
-            customFont={'Poppins-Regular'}
+            customFont={!fontsLoaded ? '' : 'Poppins_400Regular'}
           />
         </View>
         <View style={styles.loadingContainer}>
@@ -82,7 +87,7 @@ const HomeScreen = ({ navigation }: any) => {
     <ScrollView
       style={styles.container}
       bounces={false}
-      // contentContainerStyle={styles.containerStyle}
+      showsVerticalScrollIndicator={false}
     >
       {/* <StatusBar hidden /> */}
       <View style={styles.inputContainer}>
@@ -90,13 +95,16 @@ const HomeScreen = ({ navigation }: any) => {
           handleSearch={() => navigation.navigate('Search')}
           handleGoToSearch={(text) => navigation.navigate('Search')}
           placeHolder="Search your Movies..."
-          customFont={'Poppins-Regular'}
+          customFont={!fontsLoaded ? '' : 'Poppins_400Regular'}
         />
       </View>
-
-      <CategoryHeader title="Now Playing" customFont="Poppins-Semibold" />
+      <CategoryHeader
+        title="Now Playing"
+        customFont={!fontsLoaded ? '' : 'Poppins_600SemiBold'}
+      />
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         bounces={false}
         snapToInterval={width * 0.4 + SPACING.space_36}
@@ -125,14 +133,18 @@ const HomeScreen = ({ navigation }: any) => {
               cardWidth={width * 0.7}
               isFirst={index === 0}
               isLast={index === nowPlayingMoviesList?.length - 1}
-              customFont={'Poppins-Regular'}
+              customFont={!fontsLoaded ? ' ' : 'Poppins_600SemiBold'}
             />
           );
         }}
       />
-      <CategoryHeader title="Popular" customFont="Poppins-Semibold" />
+      <CategoryHeader
+        title="Popular"
+        customFont={!fontsLoaded ? '' : 'Poppins_600SemiBold'}
+      />
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         data={popularMoviesList}
         bounces={false}
@@ -148,13 +160,17 @@ const HomeScreen = ({ navigation }: any) => {
             cardWidth={width / 3}
             isFirst={index === 0}
             isLast={index === popularMoviesList?.length - 1}
-            customFont={'Poppins-Regular'}
+            customFont={!fontsLoaded ? ' ' : 'Poppins_400Regular'}
           />
         )}
       />
-      <CategoryHeader title="Upcoming" customFont="Poppins-Semibold" />
+      <CategoryHeader
+        title="Upcoming"
+        customFont={!fontsLoaded ? '' : 'Poppins_600SemiBold'}
+      />
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         data={upComingMoviesList}
         bounces={false}
@@ -170,7 +186,7 @@ const HomeScreen = ({ navigation }: any) => {
             cardWidth={width / 3}
             isFirst={index === 0}
             isLast={index === upComingMoviesList?.length - 1}
-            customFont={'Poppins-Regular'}
+            customFont={!fontsLoaded ? '' : 'Poppins_400Regular'}
           />
         )}
       />

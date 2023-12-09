@@ -1,4 +1,6 @@
 import {
+  movieCastDetails,
+  movieDetails,
   nowPlayingMovies,
   popularMovies,
   search,
@@ -46,6 +48,36 @@ export const getPopularMovies = async () => {
 export const searchMovies = async (keyword: string) => {
   try {
     const response = await fetch(search(keyword));
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getMovieDetails = async (id: number) => {
+  try {
+    const response = await fetch(movieDetails(id));
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getMovieCast = async (id: number) => {
+  try {
+    const response = await fetch(movieCastDetails(id));
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
