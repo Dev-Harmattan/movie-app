@@ -107,7 +107,7 @@ const HomeScreen = ({ navigation }: any) => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         bounces={false}
-        snapToInterval={width * 0.4 + SPACING.space_36}
+        snapToInterval={width * 0.7 + SPACING.space_36}
         decelerationRate={0}
         data={nowPlayingMoviesList}
         renderItem={({ item, index }) => {
@@ -116,7 +116,7 @@ const HomeScreen = ({ navigation }: any) => {
               <View
                 key={index}
                 style={{
-                  width: (width - (width * 0.7 + SPACING.space_36)) / 2,
+                  width: (width - (width * 0.7 + SPACING.space_36 * 2)) / 2,
                 }}
               ></View>
             );
