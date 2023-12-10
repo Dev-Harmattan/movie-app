@@ -19,3 +19,10 @@ export type dateTemplate = {
   date: string;
   day: string;
 };
+
+export enum Icon {
+  Info = 'info',
+  Dollar = 'dollar',
+  Setting = 'setting',
+  User = 'user'
+}
